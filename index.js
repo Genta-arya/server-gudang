@@ -4,7 +4,7 @@ import cors from "cors";
 
 import dotenv from "dotenv";
 const app = express();
-const port = 3001;
+const port = 3004;
 
 app.use(cors());
 app.use(express.json());
@@ -19,6 +19,18 @@ const dbConfig = mysql.createPool({
   port: process.env.DB_PORT,
   connectTimeout: 10000,
 });
+
+// console log kan connect database
+dbConfig.getConnection((err) => {
+  if (err) {
+    console.error("Error connecting to database:", err);
+  } else {
+    console.log("Connected to database");
+  }
+});
+
+
+
 
 
 
